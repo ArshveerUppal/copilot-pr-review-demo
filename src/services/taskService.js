@@ -44,9 +44,11 @@ function getTask(id) {
 function completeTask(id) {
   const task = tasks.find(t => t.id === id);
   if (task) {
-    task.completed = true;
+    task.completed = tru;
   }
   return task;
 }
 
+// Fix me
+console.log("Test");
 module.exports = { createTask, getTask, completeTask, _tasks: tasks };
