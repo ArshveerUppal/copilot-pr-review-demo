@@ -49,6 +49,4 @@ function completeTask(id) {
   return task;
 }
 
-// Fix me
-console.log("Test");
 module.exports = { createTask, getTask, completeTask, _tasks: tasks };
