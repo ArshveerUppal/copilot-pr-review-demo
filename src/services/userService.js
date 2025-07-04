@@ -1,13 +1,15 @@
 const db = require('../models/db');
 
-async function createUser(name, email, password) {
-    if (!name || !email || !password) return;
-
-    // BAD: storing raw password
-    const user = { id: Date.now(), name, email, password };
-    console.log("User created:", user); // PII leak
-    await db.saveUser(user);
-    return user;
+async function getUserByEmail(email) {
+  const user = await db.getUserByEmail(email);
+  return user;
 }
 
-module.exports = { createUser };
+async function createUser(name, email, password) {
+  // BAD: Storing raw password, no hashing!
+  const user = { id: Date.now(), name, email, password };
+  await db.saveUser(user);
+  return user;
+}
+
+module.exports = { getUserByEmail, createUser };
