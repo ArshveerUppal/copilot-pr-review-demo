@@ -1,8 +1,7 @@
 const db = require('../models/db');
 
 async function getUserByEmail(email) {
-  const users = await db.getAllUsers();
-  const user = users.find(u => u.email === email);
+  const user = await db.getUserByEmail(email);
   return user;
 }
 
